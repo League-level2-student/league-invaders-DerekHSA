@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     Font titleFont;
     Font smallFont;
     Font smallerFont;
+    Rocketship r;
 	@Override
 	public void paintComponent(Graphics g){
 		if(currentState == MENU){
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		smallerFont= new Font("Arial", Font.PLAIN, 24);
 		frameDraw = new Timer(1000/60,this);
 		frameDraw.start();
-		
+		r=new Rocketship(250,700,50,50);
 	}
 public void	updateMenuState() { 
 	
@@ -68,7 +69,7 @@ public void	 updateEndState()  {
 	 public void drawGameState(Graphics g) {  
 		 g.setColor(Color.BLACK);
 		 g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		 
+		 r.draw(g);
 	 }
 	 public void drawEndState(Graphics g)  {  
 		 g.setColor(Color.RED);
@@ -106,16 +107,16 @@ public void	 updateEndState()  {
 		    }
 		}
 		if(e.getKeyCode()==KeyEvent.VK_W) {
-			System.out.println("UP");
+			r.up();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_A) {
-			System.out.println("LEFT");
+			r.left();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_S) {
-			System.out.println("DOWN");
+			r.down();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_D) {
-			System.out.println("RIGHT");
+			r.right();
 		}
 	}
 	@Override
