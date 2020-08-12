@@ -23,6 +23,9 @@ public void addAlien(Alien ali) {
 public void update() {
 	for (int i = 0; i < aliens.size(); i++) {
 		aliens.get(i).update();
+		if (aliens.get(i).x==LeagueInvaders.HEIGHT) {
+			aliens.get(i).isActive=false;
+		}
 	}
 	for (int i = 0; i < projectiles.size(); i++) {
 		projectiles.get(i).update();
